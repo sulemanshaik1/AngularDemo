@@ -4,20 +4,23 @@ import { Component } from '@angular/core'
     selector: 'my-app',
     template: `
             <div>
-              <employee-details></employee-details>
+              <button id='buttonId' class='colorClass italicsClass' [class.boldClass]='!classTpApply'>My Button</button>
+              <br><br>
+              <button id='buttonId' class='colorClass' [ngClass]='applyAllClasses()'>My Button</button>
             </div>
     `
   }
 )
 export class AppComponent {
-  pageHeader: string = "Employee Details";
-  imagePath:string='OBaVg52wtTZ.png';
-  firstName:string='Suleman';
-  lastName:string='Shaik';
-  innerHtml:string='This is  span tag';
-  isDisable:boolean=false;
-  badHtml:string='Hello <script>alert("danger");</script> world';
-  getFullName():string{
-    return this.firstName+' '+this.lastName;
+    classTpApply:string='italicsClass colorClass';
+    applyBoldClass:boolean=true;
+    applyItalicClass:boolean=true;
+    applyAllClasses() {
+      let classes={
+        boldClass:this.applyBoldClass,
+        italicsClass:this.applyItalicClass
+
+      }
+      return classes;
+    }
   }
-}
