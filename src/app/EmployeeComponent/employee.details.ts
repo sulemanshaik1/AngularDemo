@@ -9,6 +9,7 @@ import { Component } from '@angular/core'
 export class EmployeeDetails {
     name: string = 'Suleman';
     age: number = 25;
-    gender: string = 'Male'
+    gender: string = 'Male';
+    colSpan:number=3;
 
 }
