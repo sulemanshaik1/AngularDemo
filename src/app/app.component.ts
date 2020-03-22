@@ -5,8 +5,12 @@ import { Component } from '@angular/core'
     template: `
             <div>
               <h1>{{pageHeader}}</h1>
-              <img src='{{imagePath}}'/>
+              <img src='https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/{{imagePath}}'/>
               <h1>{{getFullName()}}</h1>
+              <span [innerHtml]='innerHtml'></span><br>
+              <button disabled='{{isDisable}}'>Click here!!</button><br>
+              <button [disabled]='isDisable'>Click here for property binding!!</button>
+              <div innerHtml='{{badHtml}}'></div>
               <employee-details></employee-details>
             </div>
     `
@@ -14,9 +18,12 @@ import { Component } from '@angular/core'
 )
 export class AppComponent {
   pageHeader: string = "Employee Details";
-  imagePath:string='https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/OBaVg52wtTZ.png';
+  imagePath:string='OBaVg52wtTZ.png';
   firstName:string='Suleman';
   lastName:string='Shaik';
+  innerHtml:string='This is  span tag';
+  isDisable:boolean=false;
+  badHtml:string='Hello <script>alert("danger");</script> world';
   getFullName():string{
     return this.firstName+' '+this.lastName;
   }
