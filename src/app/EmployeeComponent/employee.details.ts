@@ -8,8 +8,15 @@ import { Component } from '@angular/core'
 )
 export class EmployeeDetails {
     name: string = 'Suleman';
+    role:string='Developer';
     age: number = 25;
     gender: string = 'Male';
     colSpan:number=3;
+    showDetails:boolean=false;
+
+    toggleDetails():void{
+        this.showDetails=!this.showDetails;
+
+    }
 
 }
