@@ -3,13 +3,13 @@ import { Component } from '@angular/core'
   {
     selector: 'my-app',
     template: `
-           <employee-details></employee-details>
+           <input type='text' [value]='name' (input)='name=$event.target.value' /><br><br>
+           <input type='text' [(ngModel)]='name' /><br><br>
+           your name is : {{name}}
     `
   }
 )
 export class AppComponent {
-  onClick():void{
-    debugger;
-    console.log('button clicked');
-  }
+  name:string='Suleman';
+
 }
