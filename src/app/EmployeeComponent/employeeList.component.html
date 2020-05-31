@@ -1,3 +1,4 @@
+<employee-count [all]='getEmployeesCount()' [Male]='getMaleEmployeesCount()' [Female]='getFemaleEmployeesCount()'></employee-count><br><br>
 <table>
     <thead>
         <tr>
@@ -9,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let employee of employees'>
+        <tr *ngFor='let employee of employees;'>
             <td>{{employee.code}}</td>
             <td>{{employee.name}}</td>
             <td>{{employee.gender}}</td>
