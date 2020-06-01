@@ -1,4 +1,8 @@
-<employee-count [all]='getEmployeesCount()' [Male]='getMaleEmployeesCount()' [Female]='getFemaleEmployeesCount()'></employee-count><br><br>
+<employee-count [all]='getEmployeesCount()'
+[Male]='getMaleEmployeesCount()'
+[Female]='getFemaleEmployeesCount()'
+(countRadioButtonSelctionChanged)='onEmployeeRadioButtionChange($event)'
+></employee-count><br><br>
 <table>
     <thead>
         <tr>
@@ -10,13 +14,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let employee of employees;'>
-            <td>{{employee.code}}</td>
-            <td>{{employee.name}}</td>
-            <td>{{employee.gender}}</td>
-            <td>{{employee.annualSalary}}</td>
-            <td>{{employee.dateOfBirth}}</td>
-        </tr>
+        <ng-container *ngFor="let employee of employees;">
+            <tr *ngIf="selectedEmployeeRadioButtonValue=='All' || selectedEmployeeRadioButtonValue==employee.gender">
+                <td>{{employee.code}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.annualSalary}}</td>
+                <td>{{employee.dateOfBirth}}</td>
+            </tr>
+        </ng-container>
         <tr *ngIf="!employees || employees.length==0">
             <td colspan="5">
                 No employees to display
