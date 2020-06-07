@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { IEmployee } from './employee';
 
 @Component({
     selector: 'employee-list',
@@ -6,7 +7,7 @@ import { Component } from "@angular/core";
     styleUrls: ['../EmployeeComponent/employeeList.component.css']
 })
 export class EmployeeList {
-    employees: any[] ;
+    employees: IEmployee[] ;
     selectedEmployeeRadioButtonValue:string='All';
     constructor() {
         this.employees = [
