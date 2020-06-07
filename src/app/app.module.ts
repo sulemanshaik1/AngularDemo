@@ -7,11 +7,11 @@ import { AppComponent } from './app.component';
 import {EmployeeDetails} from './EmployeeComponent/employee.details'
 import {EmployeeList} from './EmployeeComponent/employeeList.component'
 import {EmployeeCount} from './EmployeeComponent/employeeCount.component'
-
+import {SimpleComponent} from './Others/simple.component'
 
 @NgModule({
   declarations: [
-    AppComponent, EmployeeDetails,EmployeeList,EmployeeCount
+    AppComponent, EmployeeDetails,EmployeeList,EmployeeCount,SimpleComponent
   ],
   imports: [
     BrowserModule,
