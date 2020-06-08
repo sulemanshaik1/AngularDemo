@@ -26,7 +26,7 @@ export class EmployeeCount {
     // method to the change event of all the 3 radio buttons
     onRadioButtonSelectionChanged() {
         this.countRadioButtonSelctionChanged.emit(this.selectedRadioButtonValue);
-        console.log(this.selectedRadioButtonValue);
+        // console.log(this.selectedRadioButtonValue);
     }
 
 }
