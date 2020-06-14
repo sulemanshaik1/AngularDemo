@@ -12,24 +12,25 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngIf="!employees && employees.length==0">
-            <td colspan="5">
-                No employees to display
-            </td>
-        </tr>
-        <tr *ngIf="!employees">
-            <td colspan="5">
-                Loading data. Please wait...
-            </td>
-        </tr>
+
         <ng-container *ngFor="let employee of employees;">
             <tr *ngIf="selectedEmployeeRadioButtonValue=='All' || selectedEmployeeRadioButtonValue==employee.gender">
-                <td>{{employee.code}}</td>
+                <td>
+                    <a [routerLink]="['/employees',employee.code]">
+                    {{employee.code|uppercase}}
+                    </a>
+                </td>
                 <td>{{employee.name}}</td>
                 <td>{{employee.gender}}</td>
                 <td>{{employee.annualSalary}}</td>
                 <td>{{employee.dateOfBirth}}</td>
             </tr>
         </ng-container>
+        <tr *ngIf="!employees">
+            <td colspan="5">
+                {{statusMessage}}
+            </td>
+        </tr>
+
     </tbody>
 </table>

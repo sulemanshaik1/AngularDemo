@@ -1,22 +1,39 @@
-import {Component, Injectable} from '@angular/core'
-import {IEmployee} from './employee'
+import { Injectable } from '@angular/core'
+import { IEmployee } from './employee'
 // Import Http & Response from angular HTTP module
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
-
- // The @Injectable() decorator is used to inject other dependencies
+// The @Injectable() decorator is used to inject other dependencies
 // into this service. As our service does not have any dependencies
 // at the moment, we may remove the @Injectable() decorator and the
 // service works exactly the same way. However, Angular recomends
 // to always use @Injectable() decorator to ensures consistency
 @Injectable()
 export class EmployeeService {
-   // Define API
-  apiURL = 'https://localhost:44374/api/demo/';
-    constructor(private _http:HttpClient){}
-    getEmployee():Observable<IEmployee[]>{
+    // Define API
+    apiURL = 'https://localhost:44374/api/demo/';
+    constructor(private _http: HttpClient) { }
+    getEmployee(): Observable<IEmployee[]> {
         return this._http.get<IEmployee[]>(this.apiURL)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+    getEmployeeByCode(empcode:string): Observable<IEmployee> {
+        return this._http.get<IEmployee>(this.apiURL+empcode)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            )
+    }
+
+    // Error handling
+    handleError(error: { error: { message: string; }; status: any; message: any; }) {
+        console.error(error);
+        return Observable.throw(error);
     }
     // IEmployee[]{
     //     return [
