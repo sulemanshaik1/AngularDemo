@@ -41,7 +41,8 @@ export class EmployeeList implements OnInit {
         // ];
     }
     ngOnInit(): void {
-      this.employees=this._employeeservice.getEmployee();
+      this._employeeservice.getEmployee()
+      .subscribe(employeesData=>this.employees=employeesData);
     }
 
     onEmployeeRadioButtionChange(selectedRadioButtonValue:string):void{
