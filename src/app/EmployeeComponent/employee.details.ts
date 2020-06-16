@@ -15,6 +15,7 @@ export class EmployeeDetails implements OnInit {
     constructor(private _employeeService: EmployeeService, private _activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
+        //storing url parameter of code
         let empCode: string = this._activatedRoute.snapshot.params['code'];
         this._employeeService.getEmployeeByCode(empCode)
             .subscribe((employeeData) => {

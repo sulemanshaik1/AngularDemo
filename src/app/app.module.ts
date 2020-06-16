@@ -13,6 +13,7 @@ import {SimpleComponent} from './Others/simple.component'
 import {HomeComponent} from './home/home.component'
 import {PageNotFoundComponent} from './Others/pageNotFound.component'
 import { EmployeeService } from './EmployeeComponent/employee.service';
+import { UserPreferencesService } from './dependencyInjection/userPreferences.service';
 
 // Routes is an array of Route objects
 // Each route maps a URL path to a component
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes,{useHash:true})
   ],
-  providers:[EmployeeService],
+  providers:[EmployeeService,UserPreferencesService],
 
   bootstrap: [AppComponent]
 })
